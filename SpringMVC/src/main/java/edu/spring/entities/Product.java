@@ -1,10 +1,13 @@
 package edu.spring.entities;
 
 public class Product {
-
     private int id;
     private String title;
     private double cost;
+
+    public Product() {
+
+    }
 
     public Product(int id, String title, double cost) {
         this.id = id;
