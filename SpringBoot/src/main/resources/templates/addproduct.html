@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <title>Новый продукт</title>
@@ -69,11 +71,10 @@
         }
     </style>
 
-
 </head>
 <body>
 
-    <form class="form" th:action="@{'/addproduct'}" th:object="${product}" method="post">
+    <form class="form" method="POST" th:action="@{/addproduct.html}" th:object="${product}">
 
         <h1 class="form_title">Новый товар</h1>
 
@@ -82,7 +83,7 @@
         </div>
 
         <div class="form_grup">
-            <input class="form_input" placeholder="Цена" type="text" th:field="*{cost}"/>
+            <input class="form_input" placeholder="Цена" type="text" th:field="*{cost}" th:disabled="${disabled == true}"/>
         </div>
 
         <button class="form_button" type="submit">Добавить</button>

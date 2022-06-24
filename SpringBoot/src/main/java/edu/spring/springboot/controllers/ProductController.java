@@ -1,6 +1,6 @@
-package edu.spring.controllers;
+package edu.spring.springboot.controllers;
 
-import edu.spring.repository.ProductRepository;
+import edu.spring.springboot.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

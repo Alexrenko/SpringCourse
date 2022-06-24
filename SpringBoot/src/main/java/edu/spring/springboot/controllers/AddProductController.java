@@ -1,7 +1,7 @@
-package edu.spring.controllers;
+package edu.spring.springboot.controllers;
 
-import edu.spring.entities.Product;
-import edu.spring.repository.ProductRepository;
+import edu.spring.springboot.entities.Product;
+import edu.spring.springboot.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,18 +14,18 @@ public class AddProductController {
     @Autowired
     private ProductRepository repository;
 
-    @GetMapping("/addproduct")
+    @GetMapping("/addproduct.html")
     public String getForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "addproduct";
     }
 
-    @PostMapping("/addproduct")
+    @PostMapping("/addproduct.html")
     public String addProduct(Product product) {
         product.setId(repository.getIdCount());
         repository.add(product);
-        return "redirect:products";
+        return "redirect:products.html";
     }
 
 }

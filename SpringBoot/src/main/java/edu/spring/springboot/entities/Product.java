@@ -1,4 +1,4 @@
-package edu.spring.entities;
+package edu.spring.springboot.entities;
 
 public class Product {
     private int id;

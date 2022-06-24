@@ -1,6 +1,6 @@
-package edu.spring.repository;
+package edu.spring.springboot.repository;
 
-import edu.spring.entities.Product;
+import edu.spring.springboot.entities.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
