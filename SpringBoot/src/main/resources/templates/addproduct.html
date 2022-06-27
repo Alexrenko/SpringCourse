@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Новый продукт</title>
+
+        <menu th:replace="default :: menu"> </menu>
+
+        <form_style th:replace="default :: form_style"></form_style>
+
+    </head>
+    <body>
+
+        <form class="form" method="POST" th:action="@{/addproduct.html}" th:object="${product}">
+
+            <h1 class="form_title">Новый товар</h1>
+
+            <div class="form_grup">
+                <input class="form_input" placeholder="Название" type="text" th:field="*{title}"/>
+            </div>
+
+            <div class="form_grup">
+                <input class="form_input" placeholder="Цена" type="text"
+                       th:field="*{price}"/>
+            </div>
+
+            <button class="form_button" type="submit">Добавить</button>
+
+        </form>
+
+    </body>
+</html>
