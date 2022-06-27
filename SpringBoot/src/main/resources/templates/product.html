@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
 
-    <title>Title</title>
+    <head>
 
-    <menu th:replace="header :: menu"> </menu>
+        <meta charset="UTF-8">
 
-</head>
-<body>
+        <title>Описание товара</title>
 
-    <h2>Описание товара </h2>
-    <h2 th:text="${product.getTitle()}">product</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur consequuntur delectus eaque error excepturi fugit illum impedit iure magnam molestias nam quam, quasi quia quis repellendus sed veniam voluptatum!</p>
+        <menu th:replace="default :: menu"> </menu>
 
-</body>
+    </head>
+
+    <body>
+
+        <h2>Описание товара </h2>
+
+        <h2 th:text="${product.getTitle()}">product</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur consequuntur delectus eaque error excepturi fugit illum impedit iure magnam molestias nam quam, quasi quia quis repellendus sed veniam voluptatum!</p>
+
+    </body>
 </html>

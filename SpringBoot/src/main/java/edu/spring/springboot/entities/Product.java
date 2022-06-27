@@ -1,25 +1,36 @@
 package edu.spring.springboot.entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = ("title"))
     private String title;
-    private double cost;
+
+    @Column(name = "price")
+    private int price;
 
     public Product() {
-
     }
 
-    public Product(int id, String title, double cost) {
+    public Product(long id, String title, int price) {
         this.id = id;
         this.title = title;
-        this.cost = cost;
+        this.price = price;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -31,11 +42,11 @@ public class Product {
         this.title = title;
     }
 
-    public double getCost() {
-        return cost;
+    public int getPrice() {
+        return price;
     }
 
-    public void setCost(double cost) {
-        this.cost = cost;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
