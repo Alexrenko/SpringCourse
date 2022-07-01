@@ -1,6 +1,6 @@
 package edu.spring.springboot.dao;
 
-import edu.spring.springboot.entities.Product;
+import edu.spring.springboot.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,49 +8,50 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @Component
-public class ProductDao implements Dao<Product> {
+public class CustomerDao implements Dao<Customer> {
 
     @Autowired
     private EntityManager em;
 
-    public ProductDao() {
+    public CustomerDao() {
+
     }
 
     @Override
-    public void create(Product product) {
+    public void create(Customer customer) {
         em.getTransaction().begin();
-        em.persist(product);
+        em.persist(customer);
         em.getTransaction().commit();
     }
 
     @Override
-    public Product findById(Long id) {
+    public Customer findById(Long id) {
         em.getTransaction().begin();
-        Product product = em.createQuery("SELECT a FROM Product a WHERE a.id = :id",
-                Product.class).setParameter("id", id).getSingleResult();
+        Customer customer = em.createQuery("SELECT a FROM Customer a WHERE a.id = :id",
+                Customer.class).setParameter("id", id).getSingleResult();
         em.getTransaction().commit();
-        return product;
+        return customer;
     }
 
     @Override
-    public List<Product> findAll() {
+    public List<Customer> findAll() {
         em.getTransaction().begin();
-        List<Product> list = em.createQuery("SELECT a FROM Product a", Product.class).getResultList();
+        List<Customer> list = em.createQuery("SELECT a FROM Customer a", Customer.class).getResultList();
         em.getTransaction().commit();
         return list;
     }
 
     @Override
-    public void saveOrUpdate(Product product) {
+    public void saveOrUpdate(Customer customer) {
         em.getTransaction().begin();
-        em.merge(product);
+        em.merge(customer);
         em.getTransaction().commit();
     }
 
     @Override
     public void deleteById(Long id) {
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Product a WHERE a.id = :id").setParameter("id", id).executeUpdate();
+        em.createQuery("DELETE FROM Customer a WHERE a.id = :id").setParameter("id", id).executeUpdate();
         em.getTransaction().commit();
     }
 

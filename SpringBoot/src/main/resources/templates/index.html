@@ -1,11 +1,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-
         <menu th:replace="default :: menu"> </menu>
-
     </head>
-
+        <h1 style="padding-left: 100px">Главная страница</h1>
+        <h2 th:text="${currentName}">Добро пожаловать</h2>
     <body>
-
+        <div style="padding-left: 50px; padding-right: 300px">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci at consequuntur, dicta eligendi fuga fugit illum impedit, qui quis reprehenderit sed similique sint. Accusamus assumenda consequatur culpa reiciendis repudiandae!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quaerat reiciendis sit voluptas. A aliquam eos laboriosam laudantium magnam sunt ullam ut. Aliquid aperiam delectus dolores inventore, laboriosam quae voluptate?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam architecto ipsum libero, maiores odio porro quas, reiciendis sunt tenetur veniam voluptatem. Doloribus in obcaecati omnis quo repudiandae rerum</p>
+        </div>
     </body>
 </html>

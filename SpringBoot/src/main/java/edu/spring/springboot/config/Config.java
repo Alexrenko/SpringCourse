@@ -2,6 +2,7 @@ package edu.spring.springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,6 +17,7 @@ public class Config {
     }
 
     @Bean
+    @Scope("prototype")
     public EntityManager getEM(EntityManagerFactory factory) {
         return factory.createEntityManager();
     }

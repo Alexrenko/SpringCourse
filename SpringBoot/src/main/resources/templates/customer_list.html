@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Список покупателей</title>
+  <menu th:replace="default :: menu"> </menu>
+  <table_style th:replace="default :: table_style"> </table_style>
+</head>
+
+<body>
+<table>
+
+  <h3>Список покупателей</h3>
+
+  <tr>
+    <th>Имя</th>
+  </tr>
+
+  <tr th:each="customer : ${customer_list}">
+    <td width="200" th:text="${customer.getName()}">name</td>
+  </tr>
+
+</table>
+</body>
+
+</html>
