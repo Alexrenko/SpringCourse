@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Список товаров</title>
+  <menu th:replace="styles :: menu"> </menu>
+  <table_style th:replace="styles :: table_style"> </table_style>
+  <form_style th:replace="styles :: form_style"></form_style>
+  <style>
+    .in {
+      display: inline-block;
+      margin: 0px 5px 30px 5px;
+      padding: 2px 0 2px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div style="float: left; padding-left: 50px; padding-right: 50px">
+    <div>
+      <form th:method="GET" th:action="@{/products}">
+        <h3>Фильтрация по цене:</h3>
+
+        <label for="min">Минимум: </label>
+        <input class="in" name="min" type="text" id="min"/>
+
+        <label for="max">Минимум: </label>
+        <input class="in" name="max" type="text" id="max"/>
+
+        <input type="submit" value="Показать">
+      </form>
+    </div>
+    <table>
+        <tr>
+          <th>Id</th>
+          <th>Название</th>
+          <th>Цена</th>
+          <th>Описание</th>
+        </tr>
+        <tr align="center" th:each="product : ${productList}">
+          <td width="50" th:text="${product.getId()}">id</td>
+          <td width="200" th:text="${product.getTitle()}">title</td>
+          <td width="100" th:text="${product.getPrice()}">cost</td>
+          <td width="150">
+            <a th:href="@{/products/{id}(id=${product.getId()})}" th:text="Открыть"></a>
+          </td>
+          <td width="110">
+            <a th:href="@{/products/delete/{id}(id=${product.getId()})}" th:text="Удалить"></a>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+  <div style="float: left; padding-left: 50px; padding-right: 50px; align-items: center">
+    <h3 style="padding-left: 110px">Добавить товар</h3>
+    <div>
+      <form class="form" th:method="POST" th:action="@{/create}" th:object="${newProduct}">
+        <div class="form_grup">
+          <input class="form_input" placeholder="Название" type="text" th:field="*{title}"/>
+        </div>
+        <div class="form_grup">
+          <input class="form_input" placeholder="Цена" type="text"
+                 th:field="*{price}"/>
+        </div>
+        <button class="form_button" type="submit">Добавить</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>
