@@ -1,7 +1,6 @@
 package edu.spring.springboot.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -17,15 +16,6 @@ public class Product {
 
     @Column(name = "price")
     private int price;
-
-    @ManyToMany
-    @JoinTable(
-            name = "purchased",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id")
-    )
-    private List<Customer> customers;
-
 
     public long getId() {
         return id;
@@ -51,11 +41,4 @@ public class Product {
         this.price = price;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customer> categories) {
-        this.customers = categories;
-    }
 }
