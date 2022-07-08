@@ -21,16 +21,13 @@
 
   <div style="float: left; padding-left: 50px; padding-right: 50px">
     <div>
-      <form th:method="GET" th:action="@{/products}">
-        <h3>Фильтрация по цене:</h3>
+      <form th:method="GET" th:action="@{/products/page/1}">
+        <h3>Товаров на странице:</h3>
 
-        <label for="min">Минимум: </label>
-        <input class="in" name="min" type="text" id="min"/>
+        <label for="amount"></label>
+        <input class="in" name="amount" type="text" id="amount"/>
 
-        <label for="max">Минимум: </label>
-        <input class="in" name="max" type="text" id="max"/>
-
-        <input type="submit" value="Показать">
+        <input type="submit" value="Обновить">
       </form>
     </div>
     <table>
@@ -44,14 +41,19 @@
           <td width="50" th:text="${product.getId()}">id</td>
           <td width="200" th:text="${product.getTitle()}">title</td>
           <td width="100" th:text="${product.getPrice()}">cost</td>
-          <td width="150">
-            <a th:href="@{/products/{id}(id=${product.getId()})}" th:text="Открыть"></a>
-          </td>
           <td width="110">
-            <a th:href="@{/products/delete/{id}(id=${product.getId()})}" th:text="Удалить"></a>
+            <a th:href="@{/products/delete/{id}(id=${product.getId()})}"
+               th:text="Удалить">
+            </a>
           </td>
         </tr>
     </table>
+    <ul style="display: inline-block" th:each="page : ${pageList}">
+      <li>
+        <a th:href="@{/products/page/{pageNo}?amount={am}(pageNo=${page},am=${am})}"
+           th:text="${page}"></a>
+      </li>
+    </ul>
   </div>
 
   <div style="float: left; padding-left: 50px; padding-right: 50px; align-items: center">
