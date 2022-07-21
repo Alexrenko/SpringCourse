@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <menu th:replace="styles :: menu"> </menu>
+    <table_style th:replace="styles :: table_style"> </table_style>
+    <form_style th:replace="styles :: form_style"></form_style>
+</head>
+<body>
+
+<div>
+    <table>
+        <tr>
+            <th>Имя</th>
+            <th>Пароль</th>
+        </tr>
+        <tr align="center" th:each="user : ${userList}">
+            <td width="200" th:text="${user.getUsername()}">name</td>
+            <td width="200" th:text="${user.getPassword()}">password</td>
+            <td width="150">
+                <a th:href="@{/users/change/{id}(id=${user.getId()})}"
+                   th:text="Редактировать">
+                </a>
+            </td>
+            <td width="110">
+                <a th:href="@{/users/delete/{id}(id=${user.getId()})}"
+                   th:text="Удалить">
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div sec:authorize="hasRole('SUPERADMIN')">
+    <div style="float: left; padding-left: 50px; padding-right: 50px; align-items: center">
+        <h3 style="padding-left: 110px">Добавить пользователя</h3>
+        <div>
+            <form class="form" th:method="POST" th:action="@{/users/create}" th:object="${newUser}">
+                <div class="form_grup">
+                    <input class="form_input" placeholder="Имя" type="text"
+                           th:field="*{username}"/>
+                </div>
+                <div class="form_grup">
+                    <input class="form_input" placeholder="пароль" type="text"
+                           th:field="*{password}"/>
+                </div>
+                <button class="form_button" type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<div style="float: left; padding-left: 50px; padding-right: 50px; align-items: center">
+    <h3 style="padding-left: 110px">Добавить пользователя</h3>
+    <div>
+        <form class="form" th:method="POST" th:action="@{/users/create}" th:object="${newUser}">
+            <div class="form_grup">
+                <input class="form_input" placeholder="Имя" type="text" th:field="*{userName}"/>
+            </div>
+            <div class="form_grup">
+                <input class="form_input" placeholder="Пароль" type="text"
+                       th:field="*{password}"/>
+            </div>
+            <input type="hidden" th:field="*{enabled}">
+            <button class="form_button" type="submit">Добавить</button>
+        </form>
+    </div>
+</div>  -->
+
+</body>
+</html>
