@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div style="padding-left: 50px; padding-right: 50px">
+        <menu th:replace="styles :: menu"> </menu>
+    </div>
+</head>
+
+<body>
+<div style="padding-left: 50px; padding-right: 50px">
+    <div style="text-align: center">
+        <h1>Главная страница</h1>
+        <h2 th:text="${currentName}">Добро пожаловать</h2>
+    </div>
+    <div style="float: left; width: 30%" >
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci at consequuntur, dicta eligendi fuga fugit illum impedit, qui quis reprehenderit sed similique sint. Accusamus assumenda consequatur culpa reiciendis repudiandae!</p>
+    </div>
+    <div style="float: left; width: 30%; padding-left: 30px">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quaerat reiciendis sit voluptas. A aliquam eos laboriosam laudantium magnam sunt ullam ut. Aliquid aperiam delectus dolores inventore, laboriosam quae voluptate?</p>
+    </div>
+    <div style="float: left; width: 30%; padding-left: 30px">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quaerat reiciendis sit voluptas. A aliquam eos laboriosam laudantium magnam sunt ullam ut. Aliquid aperiam delectus dolores inventore, laboriosam quae voluptate?</p>
+    </div>
+</div>
+</body>
+</html>

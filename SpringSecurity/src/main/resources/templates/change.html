@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+    <menu th:replace="styles :: menu"> </menu>
+    <table_style th:replace="styles :: table_style"> </table_style>
+    <form_style th:replace="styles :: form_style"></form_style>
+    <style>
+        .in {
+            display: inline-block;
+            margin: 0px 5px 30px 5px;
+            padding: 2px 0 2px 0;
+        }
+        .form {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form class="form" th:method="POST" th:action="@{/products/change}" th:object="${product}">
+            <div class="form_grup">
+                <input class="form_input" placeholder="Название" type="text" th:field="*{title}"/>
+            </div>
+            <div class="form_grup">
+                <input class="form_input" placeholder="Цена" type="text"
+                       th:field="*{price}"/>
+            </div>
+            <input type="hidden" th:field="*{id}">
+            <button class="form_button" type="submit">Изменить</button>
+        </form>
+    </div>
+
+</body>
+</html>
